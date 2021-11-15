@@ -152,6 +152,7 @@ resolvconf_iface_prefix() {
 
 HAVE_SET_DNS=0
 set_dns() {
+	return 0
 	[[ ${#DNS[@]} -gt 0 ]] || return 0
 	{ printf 'nameserver %s\n' "${DNS[@]}"
 	  [[ ${#DNS_SEARCH[@]} -eq 0 ]] || printf 'search %s\n' "${DNS_SEARCH[*]}"
@@ -210,6 +211,7 @@ remove_firewall() {
 
 HAVE_SET_FIREWALL=0
 add_default() {
+	return 0
 	local table line
 	if ! get_fwmark table; then
 		table=51820
